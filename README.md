@@ -5,10 +5,10 @@ Monty 0.98 is a scripting language that is first compiled into Monty byte codes 
 
 **File Description**
 ----------------------
-monty.h - main header file
+| monty.h | main header file |
 
 **Authors**
 -------------------------
-1.Louis Gichiah
-2.Linda Macharia
+1. Louis Gichiah
+2. Linda Macharia
 
