@@ -1,7 +1,4 @@
-#include "monty.h"
-
-char stack_queue = 's';
-
+#include "monty"
 /**
  * main - Entry point
  * @argc: number of arguments passed as parameter to main program.
@@ -64,7 +61,7 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *code)
 		{"add", add},
 		{"nop", nop},
 		{"pint", pint},
-		{"swap", swap},	
+		{"swap", swap},
 		{NULL, NULL}
 	};
 
