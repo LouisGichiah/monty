@@ -42,7 +42,9 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
-
+void pint(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
 
 /**
  * get_opcode - reads opcode and verifies if is valid.
@@ -55,7 +57,7 @@ void add(stack_t **stack, unsigned int line_number);
 void get_opcode(stack_t **stack, unsigned int line_number, char *code);
 char **token_opcode(char *line);
 void free_stack_t(stack_t *head);
-void add_node(stack_t **stack, int argument);
-void add_node_queue(stack_t **stack, int argument);
+void add_node(stack_t **stack, int a);
+void add_node_queue(stack_t **stack, int a);
 
 #endif /*_MONTY_H_ */
