@@ -13,7 +13,7 @@ void pint(stack_t **stack unsigned int line_number)
 	if(tmp == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		freer();
+		free_stack_t(*stack);
 		exit(EXIT_FAILURE);
 	}
 	while (tmp->next != NULL)
@@ -30,7 +30,7 @@ void pint(stack_t **stack unsigned int line_number)
 void nop(stack_t **stack unsigned int line_number)
 {
 	(void)stack;
-	(void)ln;
+	(void)line_number;
 }
 
 /**
@@ -47,7 +47,7 @@ void swap(stack_t **stack unsigned int line_number)
 	if (tmp == NULL || tmp->next == NULL)
 	{
 		dprint(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
-		freer();
+		free_stack_t(*stack);
 		exit(EXIT_FAILURE);
 	}
 	while (tmp->next != NULL)
