@@ -35,6 +35,31 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ *struct monty -
+ *@args:
+ *@buff:
+ *@len:
+ *@stack
+ *@line_number
+ *@line:
+ *@file
+ *@stack
+ */
+typedef struct monty
+{
+	char **args;
+	char *buff;
+	size_t len;
+	stack_t *stack;
+	unsigned int line_number;
+	int line;
+	File *file;
+	unsigned int stack_queue;
+}monty_details;
+monty_details mon;
+/*parser*/
+void parse(void)
 
 extern char stack_queue;
 
@@ -59,5 +84,7 @@ char **token_opcode(char *line);
 void free_stack_t(stack_t *head);
 void add_node(stack_t **stack, int a);
 void add_node_queue(stack_t **stack, int a);
+/* frees functions */
+void freer(void);
 
-#endif /*_MONTY_H_ */
+#endif/*_MONTY_H_ */
