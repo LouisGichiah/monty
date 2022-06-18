@@ -1,12 +1,16 @@
-#ifndef _MONTY_H_
-#define _MONTY_H_
+#ifndef MONTY_H
+#define MONTY_H
 #define _POSIX_C_SOURCE  200809L
 #define _GNU_SOURCE
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,39 +41,55 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 /**
- *struct monty -
- *@args:
- *@buff:
- *@len:
- *@stack
- *@line_number
- *@line:
- *@file
- *@stack
+ *struct monty - convenience struct to hold monty details
+ *@args:parsed arguements in a given line in a monty file
+ *@buff:buffer for getline
+ *@len:length for getline
+ *@stack:pointer to stack
+ *@line_number:monty file line number
+ *@line:return value of getline
+ *@file:pointer to filestream
+ *@stack_queue:makes the entity to correspond to a stack or a queue
  */
-
-extern char stack_queue;
-
+typedef struct monty
+{
+	char **args;
+	char *buff;
+	size_t len;
+	stack_t *stack;
+	unsigned int line_number;
+	int line;
+        FILE *file;
+	unsigned int stack_queue;
+} monty_details;
+monty_details mon;
+/*parser*/
+void parse(void);
+/*helper functions*/
+int is_no(char c);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+stack_t *add_node_beg(stack_t **head, const int n);
+/*free functions*/
+void freer(void);
+void free_dlistint(stack_t *head);
+/*opcodes*/
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-
-/**
- * get_opcode - reads opcode and verifies if is valid.
- * @stack: double pointer to header (top) of the stack.
- * @line_number: counter for line number of the file.
- * @code: code to operate.
- *
- * Return: void.
- */
-void get_opcode(stack_t **stack, unsigned int line_number, char *code);
-char **token_opcode(char *line);
-void free_stack_t(stack_t *head);
-void add_node(stack_t **stack, int a);
-void add_node_queue(stack_t **stack, int a);
-
-#endif/*_MONTY_H_ */
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void div_op(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+/*ops function*/
+void ops(void);
+#endif/*MONTY_H*/
