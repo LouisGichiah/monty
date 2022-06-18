@@ -2,16 +2,16 @@
 /**
  *pint - prints the top value of a stack
  *@stack:pointer to stack
- *@line_number:line number
+ *@ln:line number
  *Return:void
  */
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int ln)
 {
 	stack_t *tmp = *stack;
 
 	if (tmp == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", ln);
 		freer();
 		exit(EXIT_FAILURE);
 	}
