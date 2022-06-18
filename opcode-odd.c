@@ -13,7 +13,7 @@ void nop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- *swap -
+ *swap - swap the top two elements
  *@stack: double pointer to stack
  *@line_number: line number
  *Return: void
