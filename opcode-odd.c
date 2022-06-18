@@ -6,7 +6,7 @@
  *
  *Return: void
  */
-void pint(stack_t **stack unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 	
@@ -27,7 +27,7 @@ void pint(stack_t **stack unsigned int line_number)
  *@line_number: line number
  *Return: void
  */
-void nop(stack_t **stack unsigned int line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
@@ -39,14 +39,14 @@ void nop(stack_t **stack unsigned int line_number)
  *@line_number: line number
  *Return: void
  */
-void swap(stack_t **stack unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 	int swap_n;
 
 	if (tmp == NULL || tmp->next == NULL)
 	{
-		dprint(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n", line_number);
 		free_stack_t(*stack);
 		exit(EXIT_FAILURE);
 	}

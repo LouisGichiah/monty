@@ -1,4 +1,4 @@
-#include "monty"
+#include "monty.h"
 /**
  * main - Entry point
  * @argc: number of arguments passed as parameter to main program.
@@ -55,7 +55,6 @@ void get_opcode(stack_t **stack, unsigned int line_number, char *code)
 {
 	int i = 0;
 	instruction_t opcode_func[] = {
-		{"push", push},
 		{"pall", pall},
 		{"pop", pop},
 		{"add", add},
